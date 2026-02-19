@@ -9,7 +9,7 @@
 </head>
 <body>
     
-
+    
     <div class="wrap">
     <header>
       <div class="title">
@@ -66,10 +66,15 @@
 
         <div class="badgeRow" id="badgeRow"></div>
 
-        <div style="margin-top:14px; border-top:1px solid var(--border); padding-top:14px;">
-          <div style="font-weight:900; margin-bottom:8px;">⚙️ Réglages</div>
-          <div class="settings">
-            <div>
+        <div class="settings-wrapper">
+            <div class="settings-toggle" id="settingsToggle">
+                ⚙️ Réglages
+                <span id="settingsArrow">▾</span>
+            </div>
+
+            <div class="settings-content" id="settingsContent">
+                <div class="settings">
+                     <div>
               <label for="quitDate">Date d’arrêt</label>
               <input id="quitDate" type="date" />
             </div>
@@ -81,10 +86,8 @@
               <button class="btn" id="save">Sauvegarder</button>
               <button class="btn danger" id="reset">Reset</button>
             </div>
-          </div>
-          <div class="muted" style="margin-top:8px;font-size:12px">
-            Astuce : tu peux mettre 13€, 12.5€, etc. Les jalons se recalculent automatiquement.
-          </div>
+                </div>
+            </div>
         </div>
       </section>
 

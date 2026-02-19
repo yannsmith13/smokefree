@@ -38,13 +38,11 @@
     }
     .title p{margin:0;color:var(--muted);font-size:14px;max-width:680px}
     .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
+        display:grid;
+        grid-template-columns: 1fr; /* toujours vertical */
+        gap:16px;
     }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
-    }
+    
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--border);
@@ -202,7 +200,7 @@
       border-radius:14px;
       border:1px solid var(--border);
       background: rgba(0,0,0,.18);
-      min-height:78px;
+      min-height:92px;
       padding:8px;
       position:relative;
       overflow:hidden;
@@ -279,4 +277,40 @@
 
 .money.today {
   color: #ffcc66; /* jaune pour aujourd’hui */
+}
+
+
+.settings-wrapper{
+  margin-top:14px;
+  border-top:1px solid var(--border);
+  padding-top:14px;
+}
+
+.settings-toggle{
+  font-weight:900;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+}
+
+.settings-content{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .35s ease, opacity .3s ease;
+  opacity:0;
+}
+
+.settings-content.open{
+  max-height:500px; /* suffisant pour le formulaire */
+  opacity:1;
+}
+
+.settings-toggle span{
+  transition: transform .3s ease;
+}
+
+.settings-toggle.open #settingsArrow{
+  transform: rotate(180deg);
 }
