@@ -261,3 +261,22 @@
     canvas#confetti{
       position:fixed; inset:0; pointer-events:none; z-index:998;
     }
+
+
+ .money {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.money.past {
+  color: #2ee59d; /* vert */
+}
+
+.money.future {
+  color: #7c5cff; /* violet */
+}
+
+.money.today {
+  color: #ffcc66; /* jaune pour aujourd’hui */
+}
