@@ -1,4 +1,4 @@
-const CACHE_NAME = "smokefree-v1";
+const CACHE_NAME = "smokefree-v2";
 
 const ASSETS = [
   "./",

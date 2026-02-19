@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const right = document.createElement("span");
         right.className = "muted";
-        right.innerHTML = `<strong style="color:rgba(255,255,255,.92)">${euro(msTotal)}</strong><br><span class="muted" style="font-size:12px">${status}</span>`;
+        right.innerHTML = `<strong class="ms-amount">${euro(msTotal)}</strong><br><span class="muted" style="font-size:12px">${status}</span>`;
 
         row.appendChild(left);
         row.appendChild(right);

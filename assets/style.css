@@ -533,3 +533,83 @@ input:focus{border-color: rgba(124,92,255,.6)}
   font-size:12px;
   color:var(--muted);
 }
+
+
+/* Mobile portrait: calendrier lisible */
+@media (max-width: 520px){
+  .calendar{
+    grid-template-columns: 1fr; /* 1 colonne */
+  }
+
+  .dow{
+    display:none; /* les jours de semaine deviennent inutiles en 1 colonne */
+  }
+
+  .day{
+    min-height: auto;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  /* Présentation en "ligne" */
+  .day .num{
+    font-size: 16px;
+  }
+
+  .money{
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .chips{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .chip{
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+
+/* Montant jalon: lisible dark + light */
+.ms-amount{
+  color: var(--text);
+}
+
+
+/* Jalons: rendre les montants lisibles en light mode (écrase le style inline blanc) */
+:root[data-theme="light"] #milestoneList .pill strong[style]{
+  color: var(--text) !important;
+}/* Mobile portrait: calendrier lisible */
+@media (max-width: 600px){
+  #calendar.calendar{
+    grid-template-columns: 1fr !important;
+  }
+
+  #calendar .dow{
+    display: none !important;
+  }
+
+  #calendar .day{
+    min-height: auto;
+    padding: 10px 12px;
+  }
+
+  #calendar .money{
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  #calendar .chips{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+}
+
+
