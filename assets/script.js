@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
     localStorage.setItem(KEY, JSON.stringify(state));
   }
 
+
+
   // --------- Milestones ----------
   function buildMilestones(quit) {
     // returns array {name, date, kind}
@@ -434,6 +436,17 @@ cell.appendChild(moneyEl);
       showToast('📅 Retour au mois courant.');
     });
   }
+
+  // --- Settings toggle (collapse/expand) ---
+const settingsToggle = document.getElementById('settingsToggle');
+const settingsContent = document.getElementById('settingsContent');
+
+if (settingsToggle && settingsContent) {
+  settingsToggle.addEventListener('click', () => {
+    settingsContent.classList.toggle('open');
+    settingsToggle.classList.toggle('open');
+  });
+}
 
   // initial render
   render();
