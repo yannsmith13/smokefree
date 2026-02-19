@@ -1,4 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const THEME_KEY = "smokefree_theme";
+const themeToggle = document.getElementById("themeToggle");
+
+function applyTheme(theme){
+  document.documentElement.dataset.theme = theme; // "light" or "dark"
+  if (themeToggle) themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
+}
+
+function initTheme(){
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === "light" || saved === "dark") {
+    applyTheme(saved);
+    return;
+  }
+  // First visit: follow system preference
+  const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  applyTheme(prefersLight ? "light" : "dark");
+}
+
+initTheme();
+
+if (themeToggle){
+  themeToggle.addEventListener("click", () => {
+    const current = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    const next = current === "light" ? "dark" : "light";
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  });
+}
+
   // --------- Utils dates (timezone locale) ----------
   const pad2 = (n) => String(n).padStart(2, '0');
   const fmtDateFR = (d) => `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
@@ -50,13 +80,23 @@ document.addEventListener("DOMContentLoaded", function() {
   // --------- Storage ----------
   const KEY = 'smokefree_v1';
   function loadState() {
-    const raw = localStorage.getItem(KEY);
-    if (raw) {
-      try { return JSON.parse(raw); } catch (e) {}
-    }
-    // Default: 5 Feb 2026, 13€/day
-    return { quitDate: '2026-02-05', dailyRate: 13 };
+  const raw = localStorage.getItem(KEY);
+  if (raw) {
+    try { return JSON.parse(raw); } catch (e) {}
   }
+
+  // Default = today
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  return {
+    quitDate: `${yyyy}-${mm}-${dd}`,
+    dailyRate: 13
+  };
+}
+
   function saveState(state) {
     localStorage.setItem(KEY, JSON.stringify(state));
   }
