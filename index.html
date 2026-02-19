@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoke Free App</title>
+
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    
+
+    <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>🚭 Smoke-Free Savings</h1>
+        <p>Une mini app motivante : économies, jalons, calendrier, badges. (Tout est local, rien n’est envoyé nulle part.)</p>
+      </div>
+      <div class="row">
+        <span class="pill"><span class="emoji">🔥</span> Série : <strong id="streakDays">—</strong> jours</span>
+        <span class="pill"><span class="emoji">💰</span> Total : <strong id="totalEuros">—</strong></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- LEFT -->
+      <section class="card">
+        <div class="row" style="justify-content:space-between; align-items:flex-start;">
+          <div>
+            <div class="muted" style="font-size:13px">Depuis ton arrêt</div>
+            <div class="big" id="sinceText">—</div>
+            <div class="muted" style="margin-top:6px" id="sinceDetail">—</div>
+          </div>
+          <div class="row">
+            <button class="btn small" id="jumpToday">Aujourd’hui</button>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="label">Jours sans fumer</div>
+            <div class="value" id="kpiDays">—</div>
+            <div class="sub" id="kpiDaysSub">—</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Économie / jour</div>
+            <div class="value" id="kpiRate">—</div>
+            <div class="sub">Modifiable dans les réglages</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Économies totales</div>
+            <div class="value" id="kpiTotal">—</div>
+            <div class="sub" id="kpiTotalSub">—</div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <div style="font-weight:900">🎯 Prochain jalon : <span id="nextMilestoneName">—</span></div>
+          <div class="muted" style="margin-top:6px" id="nextMilestoneWhen">—</div>
+          <div class="bar" style="margin-top:10px"><i id="progressBar"></i></div>
+          <div class="meta">
+            <span id="progressText">—</span>
+            <span class="pill"><span class="emoji">🏁</span> +<strong id="nextMilestoneGain">—</strong></span>
+          </div>
+        </div>
+
+        <div class="badgeRow" id="badgeRow"></div>
+
+        <div style="margin-top:14px; border-top:1px solid var(--border); padding-top:14px;">
+          <div style="font-weight:900; margin-bottom:8px;">⚙️ Réglages</div>
+          <div class="settings">
+            <div>
+              <label for="quitDate">Date d’arrêt</label>
+              <input id="quitDate" type="date" />
+            </div>
+            <div>
+              <label for="dailyRate">Économie par jour (€)</label>
+              <input id="dailyRate" type="number" step="0.01" min="0" />
+            </div>
+            <div class="row" style="justify-content:flex-end;">
+              <button class="btn" id="save">Sauvegarder</button>
+              <button class="btn danger" id="reset">Reset</button>
+            </div>
+          </div>
+          <div class="muted" style="margin-top:8px;font-size:12px">
+            Astuce : tu peux mettre 13€, 12.5€, etc. Les jalons se recalculent automatiquement.
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <section class="card">
+        <div class="calendarHead">
+          <div>
+            <div class="muted" style="font-size:13px">Calendrier</div>
+            <div class="monthTitle" id="monthTitle">—</div>
+          </div>
+          <div class="calNav">
+            <button class="btn small" id="prevMonth">←</button>
+            <button class="btn small" id="nextMonth">→</button>
+          </div>
+        </div>
+
+        <div class="calendar" id="calendar">
+          <!-- generated -->
+        </div>
+
+        <div class="legend">
+          <span><span class="dot clean"></span>Jour sans fumer</span>
+          <span><span class="dot milestone"></span>Jalon</span>
+          <span><span class="dot today"></span>Aujourd’hui</span>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div style="font-weight:900; margin-bottom:8px;">🏆 Jalons</div>
+          <div class="muted" style="font-size:13px; margin-bottom:10px;">Passés et à venir (auto)</div>
+          <div id="milestoneList" style="display:flex;flex-direction:column;gap:8px;"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+    
+    <script src="/assets/script.js"></script>
+</body>
+</html>
