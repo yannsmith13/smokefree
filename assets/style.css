@@ -435,6 +435,101 @@ input:focus{border-color: rgba(124,92,255,.6)}
   transition: transform .3s ease;
 }
 
-.settings-toggle.open #settingsArrow{
+/* flèche Réglages */
+#settingsArrow{ transition: transform .3s ease; }
+.settings-toggle.open #settingsArrow{ transform: rotate(180deg); }
+
+/* flèche Badges */
+#badgesArrow{ transition: transform .3s ease; }
+.badges-head.open #badgesArrow{ transform: rotate(180deg); }
+
+
+/* ==============================
+   BADGES (toggle + styles)
+============================== */
+
+.badges-head{
+  margin-top:12px;
+  font-weight:900;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+  border-top:1px solid var(--border);
+}
+
+#badgesArrow{
+  transition: transform .3s ease;
+}
+
+.badges-head.open #badgesArrow{
   transform: rotate(180deg);
+}
+
+/* Par défaut : on voit les badges pertinents, pas la liste complète */
+#badgesAll{
+  display:none;
+  margin-top:10px;
+}
+
+/* Quand ouvert : on cache les pertinents et on affiche tous */
+.badges-open #badgeRow{
+  display:none;
+}
+
+.badges-open #badgesAll{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* Ligne principale (badges pertinents) */
+.badgeRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+
+/* Badge card */
+.badge{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:10px 12px;
+  min-width:170px;
+
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background: rgba(0,0,0,.18);
+}
+
+:root[data-theme="light"] .badge{
+  background: rgba(15,23,42,.04);
+}
+
+/* États */
+.badge.unlocked{
+  border-color: var(--good);
+}
+
+.badge.current{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(124,92,255,.15);
+}
+
+:root[data-theme="light"] .badge.current{
+  box-shadow: 0 0 0 2px rgba(91,92,230,.18);
+}
+
+/* Texte */
+.badge .t{
+  font-weight:900;
+  letter-spacing:-.2px;
+}
+
+.badge .d{
+  font-size:12px;
+  color:var(--muted);
 }
