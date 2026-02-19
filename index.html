@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smoke Free App</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     <div class="grid">
       <!-- LEFT -->
-      <section class="card">
+      <section class="card" id="leftCard">
         <div class="row" style="justify-content:space-between; align-items:flex-start;">
           <div>
             <div class="muted" style="font-size:13px">Depuis ton arrêt</div>
@@ -69,7 +69,14 @@
           </div>
         </div>
 
-        <div class="badgeRow" id="badgeRow"></div>
+        <div class="badges-head" id="badgesToggle">
+  🏅 Badges
+  <span id="badgesArrow">▾</span>
+</div>
+
+<div class="badgeRow" id="badgeRow"></div>
+
+<div class="badges-all" id="badgesAll"></div>
 
         <div class="settings-wrapper">
             <div class="settings-toggle" id="settingsToggle">
